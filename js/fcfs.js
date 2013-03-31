@@ -3,12 +3,15 @@ dummyAnimate = function(task, numTimeUnits) {
 }
 
 /**
- * @param taskConfig An array of objects with {id, total, arrival} representing the tasks to run
+ * @param taskConfig An config object, {
+ *                   tasks: an array of objects with {id, total, arrival} representing the tasks to run
+ *                   config: task specific config, irrelevant for FCFS
+ *                   }
  * @param animate An animation callback taking as args the task object and the amount of time to run
  *                it for (in absolute units).
  */
 schedule = function(taskConfig, animate) {
-    var tasks = taskConfig.slice(0);
+    var tasks = taskConfig.tasks.slice(0);
     $.each(tasks, function(i, n) {
         n.timeLeft = n.total;
     });
