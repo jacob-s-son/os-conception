@@ -5,8 +5,7 @@
   App.FormController = (function() {
     function FormController() {
       this.formParams = __bind(this.formParams, this);
-      this.runAlgorithm = __bind(this.runAlgorithm, this);
-      this.form = $('#params-form');
+      this.runAlgorithm = __bind(this.runAlgorithm, this);      this.form = $('#params-form');
       this.form.bind("submit", this.runAlgorithm);
       this.cache = {};
       this.defaultTasks = [

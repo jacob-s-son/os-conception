@@ -35,7 +35,6 @@ class App.FormController
   tasks: ->
     @defaultTasks
 
-
 $ ->
   window.formController = new App.FormController
 
