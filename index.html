@@ -42,20 +42,64 @@
         <form id="params-form" class="form-horizontal">
           <div class="control-group">
             <label class="control-label" for="algorithm">Algorithm</label>
-            <select id="algorithm" class="span2" name="algorithm">
-              <option>FCFS</option>
-              <option>SJF</option>
-            </select>
+            <div class="controls">
+              <select id="algorithm" class="span2" name="algorithm">
+                <option>FCFS</option>
+                <option>SJF</option>
+                <option>SRTF</option>
+                <option>RR</option>
+                <option>Priority</option>
+              </select>
+            </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="someSetting">Some setting</label>
-            <select id="someSetting" class="someSetting" name="someSetting">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
+            <label class="control-label" for="timeSlice">RR time slice size</label>
+            <div class="controls">
+              <input type="text" id="timeSlice" name="timeSlice" class="someSetting" />
+            </div>
           </div>
+
+          <fieldset>
+            <legend>Task 1:</legend>
+            <div class="control-group">
+              <label class="control-label" for="total-t1">Total</label>
+              <div class="controls">
+                <input type="text" id="total-t1" name="total-t1" class="someSetting" />
+              </div>
+              <label class="control-label" for="arrival-t1">Arrival</label>
+              <div class="controls">
+                <input type="text" id="arrival-t1" name="arrival-t1" class="someSetting" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Task 2:</legend>
+            <div class="control-group">
+              <label class="control-label" for="total-t2">Total</label>
+              <div class="controls">
+                <input type="text" id="total-t2" name="total-t2" class="someSetting" />
+              </div>
+              <label class="control-label" for="arrival-t2">Arrival</label>
+              <div class="controls">
+                <input type="text" id="arrival-t2" name="arrival-t2" class="someSetting" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Task 3:</legend>
+            <div class="control-group">
+              <label class="control-label" for="total-t3">Total</label>
+              <div class="controls">
+                <input type="text" id="total-t3" name="total-t3" class="someSetting" />
+              </div>
+              <label class="control-label" for="arrival-t3">Arrival</label>
+              <div class="controls">
+                <input type="text" id="arrival-t3" name="arrival-t3" class="someSetting" />
+              </div>
+            </div>
+          </fieldset>
           <div class="control-group">
             <div class="form-action">
               <button type="submit" class="btn btn-primary" id="submit-button">Start</button>
