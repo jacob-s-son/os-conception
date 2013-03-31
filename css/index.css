@@ -1,0 +1,38 @@
+#container {
+  margin-top: 50px;
+}
+
+#container #title-row h2 #cpu-icon {
+  height: 50px;
+  line-height: 50px;
+}
+
+div#process-container {
+  /*width: 100%;*/
+}
+
+div#process-container .process {
+  width: 5px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div#process-container #process-1 {
+  background-color: red;
+}
+
+div#process-container #process-2 {
+  background-color: green;
+}
+
+div#process-container #process-3 {
+  background-color: yellow;
+}
+
+#params-form label {
+  width: 70px;
+  margin-right: 10px;
+  text-align: left;
+  font-weight: bold;
+}
