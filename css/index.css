@@ -11,22 +11,58 @@ div#process-container {
   /*width: 100%;*/
 }
 
-div#process-container .process {
-  width: 5px;
+div#processes-container .process-container {
+  /*width: 5px;*/
   height: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%;
+  /*display: inline-block;*/
+  /*float: left;*/
+  /*clear: both;*/
 }
 
-div#process-container #process-1 {
+div#processes-container .process-container .process {
+  height: 50px;
+  float: left;
+}
+
+div#processes-container .process-container span {
+  display: block;
+  float: left;
+  text-align: right;
+  height: 50px;
+  line-height: 50px;
+  width: 20px;
+  margin-right: 5px;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+
+div#processes-container .process-container  #process-label-1 {
+  color: red;
+}
+
+div#processes-container .process-container  #process-label-2 {
+  color: green;
+}
+
+div#processes-container .process-container  #process-label-3 {
+  color: yellow;
+}
+
+
+
+div#processes-container .process-container  #process-1 {
   background-color: red;
 }
 
-div#process-container #process-2 {
+div#processes-container .process-container  #process-2 {
   background-color: green;
 }
 
-div#process-container #process-3 {
+div#processes-container .process-container  #process-3 {
   background-color: yellow;
 }
 

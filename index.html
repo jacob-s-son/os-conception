@@ -4,9 +4,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link href="css/index.css" rel="stylesheet" media="screen">
   <link href="vendor/css/bootstrap.css" rel="stylesheet" media="screen">
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="vendor/js/jquery.1.9.1.js"></script>
   <script type="text/javascript" src="js/init.js"></script>
   <script type="text/javascript" src="js/process_animator.js"></script>
+  <script type="text/javascript" src="js/form_controller.js"></script>
   <title>
     OS koncepcijas praktiskais darbs
   </title>
@@ -19,25 +20,40 @@
       </h2>
     </div>
     <div id="content-row" class="row">
-      <div id="process-container" class="span8">
+      <div id="processes-container" class="span8">
         <h3> Processes </h3>
-        <div id="process-1" class="process"></div>
-        <div id="process-2" class="process"></div>
-        <div id="process-3" class="process"></div>
+        <div class="process-container">
+          <span id="process-label-1">#1</span><div id="process-1" class="process"></div>
+        </div>
+        <div class="process-container">
+          <span id="process-label-2">#2</span><div id="process-2" class="process"></div>
+        </div>
+        <div class="process-container">
+          <span id="process-label-3">#3</span><div id="process-3" class="process"></div>
+        </div>
       </div>
-      <div id="params-form" class="span4">
+      <div id="params-form-container" class="span4">
         <h3> Settings </h3>
-        <form class="form-horizontal">
+        <form id="params-form" class="form-horizontal">
           <div class="control-group">
             <label class="control-label" for="algorithm">Algorithm</label>
-            <select id="algorithm" class="span2">
+            <select id="algorithm" class="span2" name="algorithm">
               <option>Fifo</option>
             </select>
           </div>
           <div class="control-group">
+            <label class="control-label" for="someSetting">Some setting</label>
+            <select id="someSetting" class="someSetting" name="algorithm">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+          <div class="control-group">
             <div class="form-action">
-              <button type="submit" class="btn btn-primary">Start</button>
-              <button type="button" class="btn">Reset</button>
+              <button type="submit" class="btn btn-primary" id="submit-button">Start</button>
+              <button type="reset" class="btn" id="reset-button">Reset</button>
             </div>
           </div>
         </form>
