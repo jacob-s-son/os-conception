@@ -1,11 +1,10 @@
 class App.ProcessAnimator
-  @defaultUnitSize: 5
-
   constructor: ->
-    @processCache = {}
+    @processCache    = {}
+    @defaultUnitSize = 5
 
-  animate: (processId, units) ->
-    @process( processId ).style.width = "#{@process( processId ).offsetWidth + units * 5}px"
+  animate: (process, units) =>
+    @process( process.id ).style.width = "#{@process( process.id ).offsetWidth + units * @defaultUnitSize}px"
 
-  process: (processId) ->
+  process: (processId) =>
     @processCache[ "#{processId}" ] ?= document.getElementById("process-#{processId}")

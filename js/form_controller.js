@@ -4,13 +4,60 @@
 
   App.FormController = (function() {
     function FormController() {
-      this.retrieveParams = __bind(this.retrieveParams, this);      this.form = $('#params-form');
-      this.form.bind("submit", this.retrieveParams);
+      this.formParams = __bind(this.formParams, this);
+      this.runAlgorithm = __bind(this.runAlgorithm, this);      this.form = $('#params-form');
+      this.form.bind("submit", this.runAlgorithm);
+      this.cache = {};
+      this.defaultTasks = [
+        {
+          id: 1,
+          total: 10,
+          arrival: 0
+        }, {
+          id: 2,
+          total: 10,
+          arrival: 0
+        }, {
+          id: 3,
+          total: 10,
+          arrival: 0
+        }
+      ];
     }
 
-    FormController.prototype.retrieveParams = function(event) {
+    FormController.prototype.runAlgorithm = function(event) {
       event.preventDefault();
-      return this.params = this.form.serializeArray();
+      this.cache = {};
+      return this.scheduleRun();
+    };
+
+    FormController.prototype.formParams = function() {
+      var _base, _ref;
+
+      return (_ref = (_base = this.cache)['params']) != null ? _ref : _base['params'] = this.form.serializeArray().reduce(function(previousValue, currentValue, index, array) {
+        previousValue[currentValue.name] = currentValue.value;
+        return previousValue;
+      }, {});
+    };
+
+    FormController.prototype.scheduleRun = function() {
+      return this.selectedAlgorithm().schedule(this.schedulerOptions());
+    };
+
+    FormController.prototype.selectedAlgorithm = function() {
+      var _base, _ref;
+
+      return (_ref = (_base = this.cache)['algoConstant']) != null ? _ref : _base['algoConstant'] = new App.Schedulers["" + (this.formParams()['algorithm'])];
+    };
+
+    FormController.prototype.schedulerOptions = function() {
+      return {
+        tasks: this.tasks()
+      };
+    };
+
+    FormController.prototype.tasks = function() {
+      return this.defaultTasks;
     };
 
     return FormController;
@@ -18,7 +65,7 @@
   })();
 
   $(function() {
-    return new App.FormController;
+    return window.formController = new App.FormController;
   });
 
 }).call(this);

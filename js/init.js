@@ -2,4 +2,6 @@
 (function() {
   this.App = {};
 
+  this.App.Schedulers = {};
+
 }).call(this);
