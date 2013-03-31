@@ -1,6 +1,5 @@
 (function() {
     App.Schedulers.SJF = (function() {
-        SJF.defaultAnimateMethod = ( new App.ProcessAnimator ).animate;
 
         function SJF() {
         }
@@ -13,10 +12,6 @@
          *                it for (in absolute units).
          */
         SJF.prototype.schedule = function(taskConfig, animate) {
-            if ( animate === null || typeof(animate) === 'undefined' ) {
-                animate = SJF.defaultAnimateMethod;
-            }
-
             var time = 0;
 
             var tasks = taskConfig.tasks.slice(0);

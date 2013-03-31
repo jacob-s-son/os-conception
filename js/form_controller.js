@@ -4,9 +4,11 @@
 
   App.FormController = (function() {
     function FormController() {
+      this.reset = __bind(this.reset, this);
       this.formParams = __bind(this.formParams, this);
       this.runAlgorithm = __bind(this.runAlgorithm, this);      this.form = $('#params-form');
       this.form.bind("submit", this.runAlgorithm);
+      $("#reset-button").bind('click', this.reset);
       this.cache = {};
       this.defaultTasks = [
         {
@@ -27,6 +29,7 @@
 
     FormController.prototype.runAlgorithm = function(event) {
       event.preventDefault();
+      this.reset();
       this.cache = {};
       return this.scheduleRun();
     };
@@ -41,7 +44,7 @@
     };
 
     FormController.prototype.scheduleRun = function() {
-      return this.selectedAlgorithm().schedule(this.schedulerOptions());
+      return this.selectedAlgorithm().schedule(this.schedulerOptions(), (new App.ProcessAnimator).enequeProcess);
     };
 
     FormController.prototype.selectedAlgorithm = function() {
@@ -52,12 +55,32 @@
 
     FormController.prototype.schedulerOptions = function() {
       return {
-        tasks: this.tasks()
+        tasks: this.tasks(),
+        config: this.schedulerConfig()
+      };
+    };
+
+    FormController.prototype.schedulerConfig = function() {
+      return {
+        timeSlice: this.formParams()['timeSlice']
       };
     };
 
     FormController.prototype.tasks = function() {
-      return this.defaultTasks;
+      var _this = this;
+
+      return this.defaultTasks.map(function(val) {
+        return {
+          id: val.id,
+          total: parseInt(_this.formParams()["total-t" + val.id]),
+          priority: parseInt(_this.formParams()["priority-t" + val.id]),
+          arrival: parseInt(_this.formParams()["arrival-t" + val.id])
+        };
+      });
+    };
+
+    FormController.prototype.reset = function() {
+      return $('.process').width(0);
     };
 
     return FormController;

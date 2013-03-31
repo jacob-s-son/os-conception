@@ -2,6 +2,7 @@ class App.FormController
   constructor: ->
     @form = $('#params-form')
     @form.bind "submit", @runAlgorithm
+    $("#reset-button").bind 'click', @reset
     @cache = {}
 
     @defaultTasks = [
@@ -12,6 +13,7 @@ class App.FormController
 
   runAlgorithm: (event) =>
     event.preventDefault()
+    @reset()
     @cache = {}
     @scheduleRun()
 
@@ -22,7 +24,7 @@ class App.FormController
     , {}
 
   scheduleRun: ->
-    @selectedAlgorithm().schedule( @schedulerOptions() )
+    @selectedAlgorithm().schedule( @schedulerOptions(), ( new App.ProcessAnimator ).enequeProcess )
 
   selectedAlgorithm: ->
     @cache['algoConstant'] ?= new App.Schedulers["#{@formParams()['algorithm']}"]
@@ -30,10 +32,23 @@ class App.FormController
   schedulerOptions: ->
     {
       tasks: @tasks()
+      config: @schedulerConfig()
     }
 
+  schedulerConfig: ->
+    { timeSlice: @formParams()['timeSlice'] }
+
   tasks: ->
-    @defaultTasks
+    @defaultTasks.map ( val ) =>
+      {
+        id:       val.id,
+        total:    parseInt( @formParams()["total-t#{val.id}"] ),
+        priority: parseInt( @formParams()["priority-t#{val.id}"]),
+        arrival:  parseInt( @formParams()["arrival-t#{val.id}"])
+      }
+
+  reset: =>
+    $('.process').width(0)
 
 $ ->
   window.formController = new App.FormController

@@ -14,10 +14,6 @@
          *                it for (in absolute units).
          */
         FCFS.prototype.schedule = function(taskConfig, animate) {
-            if ( animate === null || typeof(animate) === 'undefined' ) {
-                animate = FCFS.defaultAnimateMethod;
-            }
-
             var tasks = taskConfig.tasks.slice(0);
             $.each(tasks, function(i, n) {
                 n.timeLeft = n.total;

@@ -6,6 +6,8 @@
   <link href="vendor/css/bootstrap.css" rel="stylesheet" media="screen">
   <script type="text/javascript" src="vendor/js/jquery.1.9.1.js"></script>
   <script type="text/javascript" src="js/init.js"></script>
+  <script type="text/javascript" src="js/job.js"></script>
+  <script type="text/javascript" src="js/animation_worker.js"></script>
   <script type="text/javascript" src="js/process_animator.js"></script>
   <script type="text/javascript" src="js/form_controller.js"></script>
   <script type="text/javascript" src="js/priority.js"></script>
@@ -55,7 +57,7 @@
           <div class="control-group">
             <label class="control-label" for="timeSlice">RR time slice size</label>
             <div class="controls">
-              <input type="text" id="timeSlice" name="timeSlice" class="someSetting" />
+              <input type="text" id="timeSlice" value="2" name="timeSlice" class="someSetting" />
             </div>
           </div>
 
@@ -64,15 +66,15 @@
             <div class="control-group">
               <label class="control-label" for="total-t1">Total</label>
               <div class="controls">
-                <input type="text" id="total-t1" name="total-t1" class="someSetting" />
+                <input type="text" value="50" id="total-t1" name="total-t1" class="someSetting" />
               </div>
               <label class="control-label" for="arrival-t1">Arrival</label>
               <div class="controls">
-                <input type="text" id="arrival-t1" name="arrival-t1" class="someSetting" />
+                <input type="text" value="0" id="arrival-t1" name="arrival-t1" class="someSetting" />
               </div>
               <label class="control-label" for="priority-t1">Priority</label>
               <div class="controls">
-                <input type="text" id="priority-t1" name="priority-t1" class="someSetting" />
+                <input type="text" value="0" id="priority-t1" name="priority-t1" class="someSetting" />
               </div>
             </div>
           </fieldset>
@@ -82,15 +84,15 @@
             <div class="control-group">
               <label class="control-label" for="total-t2">Total</label>
               <div class="controls">
-                <input type="text" id="total-t2" name="total-t2" class="someSetting" />
+                <input type="text" value="50" id="total-t2" name="total-t2" class="someSetting" />
               </div>
               <label class="control-label" for="arrival-t2">Arrival</label>
               <div class="controls">
-                <input type="text" id="arrival-t2" name="arrival-t2" class="someSetting" />
+                <input type="text" value="0" id="arrival-t2" name="arrival-t2" class="someSetting" />
               </div>
               <label class="control-label" for="priority-t2">Priority</label>
               <div class="controls">
-                <input type="text" id="priority-t2" name="priority-t2" class="someSetting" />
+                <input type="text" value="0" id="priority-t2" name="priority-t2" class="someSetting" />
               </div>
             </div>
           </fieldset>
@@ -100,15 +102,15 @@
             <div class="control-group">
               <label class="control-label" for="total-t3">Total</label>
               <div class="controls">
-                <input type="text" id="total-t3" name="total-t3" class="someSetting" />
+                <input type="text" value="50" id="total-t3" name="total-t3" class="someSetting" />
               </div>
               <label class="control-label" for="arrival-t3">Arrival</label>
               <div class="controls">
-                <input type="text" id="arrival-t3" name="arrival-t3" class="someSetting" />
+                <input type="text" value="0" id="arrival-t3" name="arrival-t3" class="someSetting" />
               </div>
               <label class="control-label" for="priority-t3">Priority</label>
               <div class="controls">
-                <input type="text" id="priority-t3" name="priority-t3" class="someSetting" />
+                <input type="text" value="0" id="priority-t3" name="priority-t3" class="someSetting" />
               </div>
             </div>
           </fieldset>

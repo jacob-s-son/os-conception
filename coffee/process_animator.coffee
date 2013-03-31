@@ -3,8 +3,12 @@ class App.ProcessAnimator
     @processCache    = {}
     @defaultUnitSize = 5
 
-  animate: (process, units) =>
-    @process( process.id ).style.width = "#{@process( process.id ).offsetWidth + units * @defaultUnitSize}px"
+  enequeProcess: (process, units) =>
+    App.AnimationWorker.eneque( new App.Job( { id: process.id, units: units }, @animateWidth ) )
+
+  animateWidth: (process) =>
+    @process( process.id ).animate({ width: "#{@process( process.id ).width() + process.units * @defaultUnitSize}px" }, 500 )
+    # @process( process.id ).width( @process( process.id ).width() + process.units * @defaultUnitSize )
 
   process: (processId) =>
-    @processCache[ "#{processId}" ] ?= document.getElementById("process-#{processId}")
+    @processCache[ "#{processId}" ] ?= $("#process-#{processId}")
