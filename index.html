@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="css/index.css" rel="stylesheet" media="screen">
+  <link href="vendor/css/bootstrap.css" rel="stylesheet" media="screen">
+  <title>
+    OS koncepcijas praktiskais darbs
+  </title>
+<body>
+  <div id="container" class="container">
+    <div id="title-row" class="row">
+      <h2>
+        <img src="img/cpu.jpeg" id="cpu-icon"></img>
+        CPU scheduler demo
+      </h2>
+    </div>
+    <div id="content-row" class="row">
+      <div id="process-container" class="span8">
+        <h3> Processes </h3>
+        <div id="process-1" class="process"></div>
+        <div id="process-2" class="process"></div>
+        <div id="process-3" class="process"></div>
+      </div>
+      <div id="params-form" class="span4">
+        <h3> Settings </h3>
+        <form class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label" for="algorithm">Algorithm</label>
+            <select id="algorithm" class="span2">
+              <option>Fifo</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <div class="form-action">
+              <button type="submit" class="btn btn-primary">Start</button>
+              <button type="button" class="btn">Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
