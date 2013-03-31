@@ -1,20 +1,33 @@
 (function() {
-    App.Schedulers.SJF = (function() {
-        SJF.defaultAnimateMethod = ( new App.ProcessAnimator ).animate;
+    App.Schedulers.SRTF = (function() {
+        SRTF.defaultAnimateMethod = ( new App.ProcessAnimator ).animate;
 
-        function SJF() {
+        function SRTF() {
         }
+
         /**
          * @param taskConfig An config object, {
          *                   tasks: an array of objects with {id, total, arrival} representing the tasks to run
-         *                   config: task specific config, irrelevant for SJF
+         *                   config: task specific config, irrelevant for SRTF
          *                   }
          * @param animate An animation callback taking as args the task object and the amount of time to run
          *                it for (in absolute units).
+         *
+         * A test case is
+         *  {tasks: [{id: "task1", total: 10, arrival: 1},
+         *           {id: "task2", total: 5, arrival: 4},
+         *           {id: "task3", total: 2, arrival: 6}]}
+         *
+         * The order of execution should be:
+         *     task1 for 3 units
+         *     task2 for 2 units
+         *     task3 for 2 units
+         *     task2 for 3 units
+         *     task1 for 7 units
          */
-        SJF.prototype.schedule = function(taskConfig, animate) {
+        SRTF.prototype.schedule = function(taskConfig, animate) {
             if ( animate === null || typeof(animate) === 'undefined' ) {
-                animate = SJF.defaultAnimateMethod;
+                animate = SRTF.defaultAnimateMethod;
             }
 
             var time = 0;
@@ -32,29 +45,27 @@
                     return lhs.timeLeft - rhs.timeLeft;
                 });
                 if (available.length) {
-                    return available[0];
+                    return {task: available[0], time: 1};
                 } else {
                     return null;
                 }
             };
             // TODO: remove this for release
             // sanity check for infinite loop
+            // TODO: implement jumps in time instead of brute-forcingly advancing it by 1
             debugFailover = 100;
-            task = selectTaskToRun(tasks);
-            while (debugFailover && (task || $.grep(tasks, function (elem) { return elem.timeLeft; }).length)) {
-                if (task) {
-                    animate(task, task.timeLeft);
-                    time += task.timeLeft;
-                    task.timeLeft = 0;
-                } else {
-                    time++;
+            info = selectTaskToRun(tasks);
+            while (debugFailover && (info || $.grep(tasks, function (elem) { return elem.timeLeft; }).length)) {
+                if (info) {
+                    animate(info.task, info.time);
+                    info.task.timeLeft--;
                 }
-                task = selectTaskToRun(tasks);
                 debugFailover--;
+                info = selectTaskToRun(tasks);
+                time++;
             }
         }
 
-        return SJF;
+        return SRTF;
     })();
 }).call(this);
-
